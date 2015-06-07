@@ -7,8 +7,21 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+<div>
+  <div>
+    <table>
+      <tr>
+        <td>
+          <%= link_to 'ToDoリスト', :root %>
+        </td>
+        <td>
+          <%= link_to '登録', new_user_path %> | 
+          <%= link_to 'ログイン', login_path %>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <%= yield %>
+</div>
 </body>
 </html>
