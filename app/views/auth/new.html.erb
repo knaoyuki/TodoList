@@ -1,2 +1,17 @@
-<h1>Auth#new</h1>
-<p>Find me in app/views/auth/new.html.erb</p>
+<h1>ログイン</h1>
+<p><%= flash[:alert] %></p>
+<%= form_tag(auth_path, method: :post) do %>
+  <table>
+    <tr>
+      <td><%= label_tag :mail, 'メール' %></td>
+      <td><%= text_field_tag :mail %></td>
+    </tr>
+    <tr>
+      <td><%= label_tag :password, 'パスワード' %></td>
+      <td><%= password_field_tag :password %></td>
+    </tr>
+    <tr>
+      <td colspan="2"><%= submit_tag 'ログイン' %></td>
+    </tr>
+  </table>
+<% end %>
