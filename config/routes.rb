@@ -1,4 +1,27 @@
 Rails.application.routes.draw do
+
+  root to: 'task#index'
+
+  # 認証関連
+  get  '/login'  => 'auth#new'   , as: 'login'
+  post '/login'  => 'auth#create', as: 'auth'
+  post '/logout' => 'auth#delete', as: 'logout'
+
+  # ユーザ関連
+  get    '/user'          => 'user#index' , as: 'users'
+  post   '/user'          => 'user#create', as: ''
+  get    '/user/new'      => 'user#new'   , as: 'new_user'
+  get    '/user/:id/edit' => 'user#edit'  , as: 'edit_user'
+  put    '/user/:id'      => 'user#update', as: 'user'
+  patch  '/user/:id'      => 'user#update', as: ''
+  delete '/user/:id'      => 'user#delete', as: ''
+
+  # タスク関連
+  get  '/task'    => 'task#index' , as: 'tasks'
+  post '/task'    => 'task#create', as: ''
+  get  '/task:id' => 'task#update', as: 'task'
+  post '/task:id' => 'task#delete', as: ''
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
