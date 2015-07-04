@@ -1,7 +1,7 @@
 class TaskController < ApplicationController
   def index
     @task = Task.new
-    @tasks = Task.all
+    @tasks = Task.active
   end
 
   def create
@@ -15,12 +15,16 @@ class TaskController < ApplicationController
     if @task.save
       redirect_to :tasks
     else
-      @tasks = Task.all
+      @tasks = Task.active
       render :index
     end
   end
 
   def update
+    @task = Task.find(params[:id])
+    @task.completed = !@task.completed
+    @task.save
+    redirect_to :tasks
   end
 
   def delete

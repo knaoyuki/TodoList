@@ -25,7 +25,7 @@
   <table>
    <% @tasks.each do |task| %>
     <tr>
-      <td><input type="checkbox" <%= task.completed ? 'checked' : '' %></td>
+      <td><input type="checkbox" id="chk<%= task.id %>" <%= task.completed ? 'checked' : '' %> onClick="Turbolinks.visit('/task/<%= task.id %>')"></td>
       <td><%= task.priority.name %></td>
       <td><%= task.user.name %></td>
       <td><%= task.description %></td>
