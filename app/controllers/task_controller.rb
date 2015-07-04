@@ -6,7 +6,8 @@ class TaskController < ApplicationController
     @cond1 = (cond == 1)
     @cond2 = (cond == 2)
     @cond3 = (cond == 3)
-    @tasks = Task.active(cond)
+    id = params[:user]
+    @tasks = Task.active(cond,current_user.id)
     session[:condition] = cond
   end
 
@@ -22,7 +23,7 @@ class TaskController < ApplicationController
       session[:condition] = 1
       redirect_to :tasks
     else
-      @tasks = Task.active(session[:condition])
+      @tasks = Task.active(session[:condition],current_user.id)
       render :index
     end
   end
