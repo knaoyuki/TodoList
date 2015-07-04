@@ -1,7 +1,13 @@
 class TaskController < ApplicationController
   def index
     @task = Task.new
-    @tasks = Task.active
+    cond = params[:condition] || session[:condition] || 1
+    cond = cond.to_i
+    @cond1 = (cond == 1)
+    @cond2 = (cond == 2)
+    @cond3 = (cond == 3)
+    @tasks = Task.active(cond)
+    session[:condition] = cond
   end
 
   def create
@@ -13,9 +19,10 @@ class TaskController < ApplicationController
     @task.description = task_params[:description]
     @task.deleted = false
     if @task.save
+      session[:condition] = 1
       redirect_to :tasks
     else
-      @tasks = Task.active
+      @tasks = Task.active(session[:condition])
       render :index
     end
   end
