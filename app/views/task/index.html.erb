@@ -18,7 +18,9 @@
 </div>
 
 <hr>
-
+<input type="radio">残存
+<input type="radio">完了
+<input type="radio">全件
 <% if @tasks.empty? %>
   <p>taskはありません</p>
 <% else %>
@@ -29,7 +31,7 @@
       <td><%= task.priority.name %></td>
       <td><%= task.user.name %></td>
       <td><%= task.description %></td>
-      <td>削除</td>
+      <td><%= link_to '削除', task, method: :delete, data:{ confirm: '削除しますか？'} %></td>
     </tr>
   <% end %>
   </table>

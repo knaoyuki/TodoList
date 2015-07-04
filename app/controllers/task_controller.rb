@@ -28,5 +28,9 @@ class TaskController < ApplicationController
   end
 
   def delete
+    @task = Task.find(params[:id])
+    @task.deleted = true
+    @task.save
+    redirect_to :tasks
   end
 end

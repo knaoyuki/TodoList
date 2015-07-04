@@ -3,6 +3,6 @@ class Task < ActiveRecord::Base
   belongs_to :priority
 
   scope :active, -> {
-    where(:completed => false)
+    where(:completed => false, :deleted => false)
   }
 end
