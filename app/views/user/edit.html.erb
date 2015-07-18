@@ -1,2 +1,24 @@
-<h1>User#edit</h1>
-<p>Find me in app/views/user/edit.html.erb</p>
+<h1>ユーザ情報変更</h1>
+<%= form_for(@user) do |f| %>
+  <table>
+    <tr>
+      <td><%= f.label :mail, 'メール' %></td>
+      <td><%= f.text_field :mail %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :name, '名称' %></td>
+      <td><%= f.text_field :name %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :password, 'パスワード' %></td>
+      <td><%= f.password_field :password %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :password_confirmation, 'パスワード(2回目)' %></td>
+      <td><%= f.password_field :password_confirmation %></td>
+    </tr>
+    <tr>
+      <td colspan="2"><%= f.submit '変更', method: :put %></td>
+    </tr>
+  </table>
+<% end %>
