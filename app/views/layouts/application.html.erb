@@ -7,13 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div>
-  <div>
-    <table>
+<header class="navbar nabvar-fixed-top navbar-inverse">
+<div class="navbar-inner">
+  <div class="container">
+    <%= link_to 'ToDoリスト', :root %>
+    <nav>
+    <table class="nav pull-right">
       <tr>
-        <td>
-          <%= link_to 'ToDoリスト', :root %>
-        </td>
         <td>
           <% if current_user %>
             <%= link_to current_user.name, edit_user_path(current_user) %> |
@@ -25,7 +25,11 @@
         </td>
       </tr>
     </table>
+    </nav>
   </div>
+</div>
+</header>
+<div class="container">
   <%= yield %>
 </div>
 </body>
