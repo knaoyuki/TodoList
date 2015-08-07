@@ -10,6 +10,7 @@ class UserController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def create
@@ -28,6 +29,18 @@ class UserController < ApplicationController
   end
 
   def update
+    user_params = params.require(:user).permit(
+      :mail,
+      :name,
+      :password,
+      :password_confimation 
+    )
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+     redirect_to edit_user_path 
+    else
+     render :edit
+    end
   end
 
   def delete
