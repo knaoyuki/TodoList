@@ -17,6 +17,7 @@ class UserController < ApplicationController
     user_params = params.require(:user).permit(
       :mail,
       :name,
+      :trainer_id,
       :password,
       :password_confirmation
     )
@@ -32,6 +33,7 @@ class UserController < ApplicationController
     user_params = params.require(:user).permit(
       :mail,
       :name,
+      :trainer_id,
       :password,
       :password_confimation 
     )

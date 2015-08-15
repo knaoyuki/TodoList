@@ -7,7 +7,9 @@ class TaskController < ApplicationController
     @cond2 = (cond == 2)
     @cond3 = (cond == 3)
     id = params[:user]
-    @tasks = Task.order("priority_id").active(cond,current_user.id)
+    @trainee = User.where(trainer_id: current_user.id).first
+    t_id = @trainee.id
+    @tasks = Task.order("priority_id").active(cond,current_user.id,t_id)
     session[:condition] = cond
   end
 
