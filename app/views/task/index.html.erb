@@ -27,7 +27,7 @@
 <% if @tasks.empty? %>
   <p>taskはありません</p>
 <% else %>
-  <table>
+  <table height="50">
    <% @tasks.each do |task| %>
     <tr>
       <td><input type="checkbox" id="chk<%= task.id %>" <%= task.completed ? 'checked' : '' %> onClick="Turbolinks.visit('/task/<%= task.id %>')"></td>
