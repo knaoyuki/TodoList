@@ -27,14 +27,14 @@
 <% if @tasks.empty? %>
   <p>taskはありません</p>
 <% else %>
-  <table height="50">
+  <table id="task">
    <% @tasks.each do |task| %>
-    <tr>
-      <td><input type="checkbox" id="chk<%= task.id %>" <%= task.completed ? 'checked' : '' %> onClick="Turbolinks.visit('/task/<%= task.id %>')"></td>
-      <td><%= task.priority.name %></td>
-      <td><%= task.user.name %></td>
-      <td><%= task.description %></td>
-      <td><%= link_to '削除', task, method: :delete, data:{ confirm: '削除しますか？'} %></td>
+    <tr id="task">
+      <td id="task"><input type="checkbox" id="chk<%= task.id %>" <%= task.completed ? 'checked' : '' %> onClick="Turbolinks.visit('/task/<%= task.id %>')"></td>
+      <td id="task"><%= task.priority.name %></td>
+      <td id="task"><%= task.user.name %></td>
+      <td id="task"><%= task.description %></td>
+      <td id="task"><%= link_to '削除', task, method: :delete, data:{ confirm: '削除しますか？'} %></td>
     </tr>
   <% end %>
   </table>
