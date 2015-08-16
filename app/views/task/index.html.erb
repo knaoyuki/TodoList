@@ -24,11 +24,27 @@
   <%= radio_button_tag("condition", 3, @cond3 || false, id: :cond3) %> <%= label_tag("cond3", "全件") %>
 <% end %>
 
-<% if @tasks.empty? %>
+<% if @mytasks.empty? %>
   <p>taskはありません</p>
 <% else %>
   <table id="task">
-   <% @tasks.each do |task| %>
+   <% @mytasks.each do |task| %>
+    <tr id="task">
+      <td id="task"><input type="checkbox" id="chk<%= task.id %>" <%= task.completed ? 'checked' : '' %> onClick="Turbolinks.visit('/task/<%= task.id %>')"></td>
+      <td id="task"><%= task.priority.name %></td>
+      <td id="task"><%= task.user.name %></td>
+      <td id="task"><%= task.description %></td>
+      <td id="task"><%= link_to '削除', task, method: :delete, data:{ confirm: '削除しますか？'} %></td>
+    </tr>
+  <% end %>
+  </table>
+<% end %>
+
+<% if @traineetasks.nil? %>
+  <p>トレーニーのtaskはありません</p>
+<% else %>
+  <table id="task">
+   <% @traineetasks.each do |task| %>
     <tr id="task">
       <td id="task"><input type="checkbox" id="chk<%= task.id %>" <%= task.completed ? 'checked' : '' %> onClick="Turbolinks.visit('/task/<%= task.id %>')"></td>
       <td id="task"><%= task.priority.name %></td>
