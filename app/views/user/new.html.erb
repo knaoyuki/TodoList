@@ -21,7 +21,7 @@
     </tr>
     <tr>
       <td><%= f.label :trainer_id, 'トレーナー' %></td>
-      <td><%= f.select :trainer_id, User.all.map{|t| [t.name, t.id]} %></td>
+      <td><%= f.select :trainer_id, User.all.map{|t| [t.name, t.id]}, :include_blank => true %></td>
     </tr>
     <tr>
       <td><%= f.label :password, 'パスワード' %></td>

@@ -11,6 +11,7 @@ class TaskController < ApplicationController
     if @trainee.nil?
     @mytasks = Task.order("priority_id").active(cond,current_user.id)
     else
+    t_id = @trainee.id
     @mytasks = Task.order("priority_id").active(cond,current_user.id)
     @traineetasks = Task.order("priority_id").active(cond,t_id)
     end 
