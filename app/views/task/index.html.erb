@@ -10,7 +10,7 @@
       <tr>
         <td><%= f.text_field :description %></td>
         <td><%= f.select :priority, Priority.all.map{|t| [t.name, t.id]} %></td>
-        <td><%= f.select :user, [[current_user.name, current_user.id]] %></td>
+        <td><%= f.select :user, User.where(["trainer_id = ? or id = ?", current_user.id,current_user.id]).map{|t| [t.name, t.id]} %></td>
         <td><%= f.submit '登録' %></td>
       </tr>
     </table>
