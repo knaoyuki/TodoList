@@ -1,17 +1,23 @@
-<h1>ログイン</h1>
-<p><%= flash[:alert] %></p>
-<%= form_tag(auth_path, method: :post) do %>
-  <table>
-    <tr>
-      <td><%= label_tag :mail, 'メール' %></td>
-      <td><%= text_field_tag :mail %></td>
-    </tr>
-    <tr>
-      <td><%= label_tag :password, 'パスワード' %></td>
-      <td><%= password_field_tag :password %></td>
-    </tr>
-    <tr>
-      <td colspan="2"><%= submit_tag 'ログイン' %></td>
-    </tr>
-  </table>
-<% end %>
+<div class="col-lg-8 col-md-7 col-sm-6">
+  <h1>ログイン</h1>
+  <p><%= flash[:alert] %></p>
+  <%= form_tag(auth_path, method: :post) do %>
+    <table>
+      <tr>
+        <td style="padding:20px 20px 0px 0px"><%= label_tag :mail, 'メール', :class => "lead" %></td>
+        <td><%= text_field_tag :mail, "", :class => 'form-control', :size => "30" %></td>
+      </tr>
+      <tr>
+        <td style="padding:20px 20px 0px 0px"><%= label_tag :password, 'パスワード', :class => "lead" %></td>
+        <td><%= password_field_tag :password, "", :class => 'form-control', :size => "30" %></td>
+      </tr>
+      <tr>
+        <td style="padding-top:20px" colspan="2" align="right"><%= submit_tag 'ログイン', :class => "btn btn-default btn-block" %></td>
+      </tr>
+    </table>
+  <% end %>
+</div>
+<div>
+kokodenannkasitai
+</div>
+
