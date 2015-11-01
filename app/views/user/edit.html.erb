@@ -11,31 +11,29 @@
       </ul>
     </div>
   <% end %>
-  <table>
+  <table class="usertable">
     <tr>
-  <table>
-    <tr>
-      <td><%= f.label :mail, 'メール' %></td>
-      <td><%= f.text_field :mail %></td>
+      <td><%= f.label :mail, 'メール', :class => "lead" %></td>
+      <td><%= f.text_field :mail, :class => "form-control", :size => "30" %></td>
     </tr>
     <tr>
-      <td><%= f.label :name, '名称' %></td>
-      <td><%= f.text_field :name %></td>
+      <td><%= f.label :name, '名称', :class => "lead" %></td>
+      <td><%= f.text_field :name, :class => "form-control", :size => "30" %></td>
     </tr>
     <tr>
-      <td><%= f.label :trainer_id, 'トレーナー' %></td>
-      <td><%= f.select :trainer_id, User.all.map{|t| [t.name, t.id]} %></td>
+      <td><%= f.label :trainer_id, 'トレーナー', :class => "lead" %></td>
+      <td><%= f.select :trainer_id, User.all.map{|t| [t.name, t.id]}, { :include_blank => true }, { class: "form-control" } %></td>
     </tr>
     <tr>
-      <td><%= f.label :password, 'パスワード' %></td>
-      <td><%= f.password_field :password %></td>
+      <td><%= f.label :password, 'パスワード', :class => "lead" %></td>
+      <td><%= f.password_field :password, :class => "form-control" %></td>
     </tr>
     <tr>
-      <td><%= f.label :password_confirmation, 'パスワード(2回目)' %></td>
-      <td><%= f.password_field :password_confirmation %></td>
+      <td><%= f.label :password_confirmation, 'パスワード(2回目)', :class => "lead" %></td>
+      <td><%= f.password_field :password_confirmation, :class => "form-control" %></td>
     </tr>
     <tr>
-      <td colspan="2"><%= f.submit '変更', method: :put %></td>
+      <td id="b" colspan="2"><%= f.submit '変更', method: :put, :class => "form-control" %></td>
     </tr>
   </table>
 <% end %>
