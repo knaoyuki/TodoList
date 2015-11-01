@@ -2,10 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-tr#task {
-  height: 30px;
+.tasktable {
+  border-collapse: collapse;
+  table-layout: fixed;
 }
 
-td#task {
-  padding: 10px;
+.tasktable td {
+  padding: 5px 10px;
+  text-align: left;
 }
+

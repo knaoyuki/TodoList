@@ -2,16 +2,16 @@
   <%= form_for(@task) do |f| %>
     <table>
       <tr>
-        <td><%= f.label :description, 'タスク' %></td>
-        <td><%= f.label :priority, '優先度' %></td>
-        <td><%= f.label :user, '担当者' %></td>
+        <td style="padding:20px 20px 0px 0px"><%= f.label :description, 'タスク', :class => "lead" %></td>
+        <td style="padding:20px 20px 0px 0px"><%= f.label :priority, '優先度', :class => "lead" %></td>
+        <td style="padding:20px 20px 0px 0px"><%= f.label :user, '担当者', :class => "lead" %></td>
         <td></td>
       </tr>
       <tr>
-        <td><%= f.text_field :description %></td>
-        <td><%= f.select :priority, Priority.all.map{|t| [t.name, t.id]} %></td>
-        <td><%= f.select :user, User.where(["trainer_id = ? or id = ?", current_user.id,current_user.id]).map{|t| [t.name, t.id]} %></td>
-        <td><%= f.submit '登録' %></td>
+        <td style="padding:5px 20px 0px 0px"><%= f.text_field :description, :class => "form-control", :size => "30" %></td>
+        <td style="padding:5px 20px 0px 0px"><%= f.select :priority, Priority.all.map{|t| [t.name, t.id]}, {}, { class: "form-control" } %></td>
+        <td style="padding:5px 20px 0px 0px"><%= f.select :user, User.where(["trainer_id = ? or id = ?", current_user.id,current_user.id]).map{|t| [t.name, t.id]}, {}, { class: "form-control" } %></td>
+        <td><%= f.submit '登録', :class => "form-control" %></td>
       </tr>
     </table>
   <% end %>
@@ -19,22 +19,22 @@
 
 <hr>
 <%= form_tag('/task', method: :get, id: "condition") do %>
-  <%= radio_button_tag("condition", 1, @cond1 || true, id: :cond1) %> <%= label_tag("cond1", "残存") %>
-  <%= radio_button_tag("condition", 2, @cond2 || false, id: :cond2) %> <%= label_tag("cond2", "完了") %>
-  <%= radio_button_tag("condition", 3, @cond3 || false, id: :cond3) %> <%= label_tag("cond3", "全件") %>
+  <%= radio_button_tag("condition", 1, @cond1 || true, id: :cond1) %> <%= label_tag("cond1", "残存", :class => "lead") %>
+  <%= radio_button_tag("condition", 2, @cond2 || false, id: :cond2) %> <%= label_tag("cond2", "完了", :class => "lead") %>
+  <%= radio_button_tag("condition", 3, @cond3 || false, id: :cond3) %> <%= label_tag("cond3", "全件", :class => "lead") %>
 <% end %>
 
 <% if @mytasks.empty? %>
   <p>taskはありません</p>
 <% else %>
-  <table id="task">
+  <table class="tasktable">
    <% @mytasks.each do |task| %>
-    <tr id="task">
-      <td id="task"><input type="checkbox" id="chk<%= task.id %>" <%= task.completed ? 'checked' : '' %> onClick="Turbolinks.visit('/task/<%= task.id %>')"></td>
-      <td id="task"><%= task.priority.name %></td>
-      <td id="task"><%= task.user.name %></td>
-      <td id="task"><%= task.description %></td>
-      <td id="task"><%= link_to '削除', task, method: :delete, data:{ confirm: '削除しますか？'} %></td>
+    <tr>
+      <td><input type="checkbox" id="chk<%= task.id %>" <%= task.completed ? 'checked' : '' %> onClick="Turbolinks.visit('/task/<%= task.id %>')"></td>
+      <td><%= task.priority.name %></td>
+      <td><%= task.user.name %></td>
+      <td><%= task.description %></td>
+      <td><%= link_to '削除', task, method: :delete, data:{ confirm: '削除しますか？'} %></td>
     </tr>
   <% end %>
   </table>
@@ -43,14 +43,14 @@
 <% if @traineetasks.nil? %>
   <p>トレーニのtaskはありません</p>
 <% else %>
-  <table id="task">
+  <table class="tasktable">
    <% @traineetasks.each do |task| %>
-    <tr id="task">
-      <td id="task"><input type="checkbox" id="chk<%= task.id %>" <%= task.completed ? 'checked' : '' %> onClick="Turbolinks.visit('/task/<%= task.id %>')"></td>
-      <td id="task"><%= task.priority.name %></td>
-      <td id="task"><%= task.user.name %></td>
-      <td id="task"><%= task.description %></td>
-      <td id="task"><%= link_to '削除', task, method: :delete, data:{ confirm: '削除しますか？'} %></td>
+    <tr>
+      <td><input type="checkbox" id="chk<%= task.id %>" <%= task.completed ? 'checked' : '' %> onClick="Turbolinks.visit('/task/<%= task.id %>')"></td>
+      <td><%= task.priority.name %></td>
+      <td><%= task.user.name %></td>
+      <td><%= task.description %></td>
+      <td><%= link_to '削除', task, method: :delete, data:{ confirm: '削除しますか？'} %></td>
     </tr>
   <% end %>
   </table>
