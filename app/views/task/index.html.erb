@@ -11,7 +11,7 @@
         <td style="padding:5px 20px 0px 0px"><%= f.text_field :description, :class => "form-control", :size => "30" %></td>
         <td style="padding:5px 20px 0px 0px"><%= f.select :priority, Priority.all.map{|t| [t.name, t.id]}, {}, { class: "form-control" } %></td>
         <td style="padding:5px 20px 0px 0px"><%= f.select :user, User.where(["trainer_id = ? or id = ?", current_user.id,current_user.id]).map{|t| [t.name, t.id]}, {}, { class: "form-control" } %></td>
-        <td><%= f.submit '登録', :class => "form-control" %></td>
+        <td style="padding:5px 20px 0px 0px"><%= f.submit '登録', :class => "form-control" %></td>
       </tr>
     </table>
   <% end %>
@@ -34,26 +34,23 @@
       <td><%= task.priority.name %></td>
       <td><%= task.user.name %></td>
       <td><%= task.description %></td>
-      <td><%= link_to '削除', task, method: :delete, data:{ confirm: '削除しますか？'} %></td>
+      <td><%= link_to '削除', task, method: :delete, data:{ confirm: '削除しますか？'}, :class => "btn btn-danger btn-sm" %></td>
     </tr>
   <% end %>
-  </table>
-<% end %>
-
 <% if @traineetasks.nil? %>
   <p>トレーニのtaskはありません</p>
 <% else %>
-  <table class="tasktable">
-   <% @traineetasks.each do |task| %>
-    <tr>
-      <td><input type="checkbox" id="chk<%= task.id %>" <%= task.completed ? 'checked' : '' %> onClick="Turbolinks.visit('/task/<%= task.id %>')"></td>
-      <td><%= task.priority.name %></td>
-      <td><%= task.user.name %></td>
-      <td><%= task.description %></td>
-      <td><%= link_to '削除', task, method: :delete, data:{ confirm: '削除しますか？'} %></td>
-    </tr>
+  <% @traineetasks.each do |ttask| %>
+   <tr>
+     <td><input type="checkbox" id="chk<%= ttask.id %>" <%= ttask.completed ? 'checked' : '' %> onClick="Turbolinks.visit('/task/<%= ttask.id %>')"></td>
+     <td><%= ttask.priority.name %></td>
+     <td><%= ttask.user.name %></td>
+     <td><%= ttask.description %></td>
+     <td><%= link_to '削除', ttask, method: :delete, data:{ confirm: '削除しますか？'}, :class => "btn btn-danger btn-sm" %></td>
+   </tr>
   <% end %>
   </table>
+<% end %>
 <% end %>
 
 <script>
