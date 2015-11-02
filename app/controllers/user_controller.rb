@@ -11,6 +11,8 @@ class UserController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    result = User.where.not(id: params[:id])
+    @user_without = result.map{|t| [t.name, t.id]}
   end
 
   def create
