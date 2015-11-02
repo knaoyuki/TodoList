@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150607043143) do
+ActiveRecord::Schema.define(version: 20151102132018) do
 
   create_table "priorities", force: :cascade do |t|
     t.string "name", null: false
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20150607043143) do
     t.boolean  "deleted",     null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "contents"
   end
 
   add_index "tasks", ["user_id"], name: "index_tasks_on_user_id"
