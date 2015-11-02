@@ -17,10 +17,11 @@ Rails.application.routes.draw do
   delete '/user/:id'      => 'user#delete', as: ''
 
   # タスク関連
-  get  '/task'    => 'task#index' , as: 'tasks'
-  post '/task'    => 'task#create', as: ''
-  get  '/task/:id' => 'task#update', as: 'task'
-  delete '/task/:id' => 'task#delete', as: ''
+  get  '/task'          => 'task#index' , as: 'tasks'
+  post '/task'          => 'task#create', as: ''
+  get  '/task/:id'      => 'task#update', as: 'task'
+  delete '/task/:id'    => 'task#delete', as: ''
+  get  '/task/:id/content' => 'task#content', as: 'content_task' 
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

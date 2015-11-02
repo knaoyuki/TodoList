@@ -33,7 +33,7 @@
       <td><input type="checkbox" id="chk<%= task.id %>" <%= task.completed ? 'checked' : '' %> onClick="Turbolinks.visit('/task/<%= task.id %>')"></td>
       <td><%= task.priority.name %></td>
       <td><%= task.user.name %></td>
-      <td><%= task.description %></td>
+      <td><%= link_to task.description, controller: "task", action: "content", id: task %></td>
       <td><%= link_to '削除', task, method: :delete, data:{ confirm: '削除しますか？'}, :class => "btn btn-danger btn-sm" %></td>
     </tr>
   <% end %>

@@ -48,4 +48,9 @@ class TaskController < ApplicationController
     @task.save
     redirect_to :tasks
   end
+  
+  def content 
+    @task = Task.find(params[:id])
+    render :content
+  end
 end
