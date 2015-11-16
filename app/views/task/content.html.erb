@@ -1,11 +1,28 @@
-<h1>タスクメモ</h1>
-  <% if @task.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= @task.errors.count %>件のエラーが発生しました。</h2>
-      <ul>
-        <% @task.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<% if @task.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= @task.errors.count %>件のエラーが発生しました。</h2>
+    <ul>
+      <% @task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= form_for(@task) do |f| %>
+  <table class="usertable">
+    <tr>
+      <td>
+        <h3><%= @task.description %></h3>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <%= f.text_area :contents, :size => "120x30", :maxlength => "2000", :class => "form-control" %>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td id="b"><%= f.submit '保存', method: :patch, :class => "btn btn-primary" %></td>
+    </tr>
+  </table>
+<% end %>
