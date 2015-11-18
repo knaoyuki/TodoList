@@ -21,7 +21,7 @@
     </tr>
     <tr>
       <td><%= f.label :trainer_id, 'トレーナー', :class => "lead" %></td>
-      <td><%= f.select :trainer_id, @user_without, { :include_blank => true }, { class: "form-control" } %></td>
+      <td><%= f.select :trainer_id, User.where.not(id: params[:id]).map{|t| [t.name, t.id]}, { :include_blank => true }, { class: "form-control" } %></td>
     </tr>
     <tr>
       <td><%= f.label :password, 'パスワード', :class => "lead" %></td>
