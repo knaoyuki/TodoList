@@ -53,13 +53,14 @@ class TaskController < ApplicationController
     @task = Task.find(params[:id])
   end
 
-  def update
+  def save
     task_params = params[:task]
     @task = Task.find(params[:id])
     @task.contents = task_params[:contents]
     if @task.save
       redirect_to :content_task
     else
+      render :content
     end
   end
 end
