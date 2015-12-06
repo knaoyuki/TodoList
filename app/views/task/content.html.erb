@@ -14,15 +14,12 @@
       <td>
         <h3><%= @task.description %></h3>
       </td>
+      <td id="b"><%= f.submit '保存', method: :patch, :class => "btn btn-primary" %></td>
     </tr>
     <tr>
       <td>
         <%= f.text_area :contents, :size => "120x30", :maxlength => "2000", :class => "form-control" %>
       </td>
-    </tr>
-    <tr>
-      <td></td>
-      <td id="b"><%= f.submit '保存', method: :patch, :class => "btn btn-primary" %></td>
     </tr>
   </table>
 <% end %>
