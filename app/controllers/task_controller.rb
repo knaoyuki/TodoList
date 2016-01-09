@@ -58,7 +58,7 @@ class TaskController < ApplicationController
     @task = Task.find(params[:id])
     @task.contents = task_params[:contents]
     if @task.save
-      redirect_to :content_task
+      redirect_to :tasks
     else
       render :content
     end
